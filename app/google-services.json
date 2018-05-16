@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "294579062545",
+    "firebase_url": "https://dogbreeddectector.firebaseio.com",
+    "project_id": "dogbreeddectector",
+    "storage_bucket": "dogbreeddectector.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294579062545:android:c004205a1680cf21",
+        "android_client_info": {
+          "package_name": "com.dupre.sandra.dogbreeddetector"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "294579062545-1oo73po6lu649qb6ovuj63vri9clf2qj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDScoW7EC68T-4XGQh_41RrtybvUBDRg-o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

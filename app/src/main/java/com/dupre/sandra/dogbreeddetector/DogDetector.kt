@@ -5,7 +5,6 @@ import android.graphics.Bitmap
 import com.google.firebase.ml.common.FirebaseMLException
 import com.google.firebase.ml.custom.*
 import com.google.firebase.ml.custom.model.FirebaseCloudModelSource
-import com.google.firebase.ml.custom.model.FirebaseLocalModelSource
 import com.google.firebase.ml.custom.model.FirebaseModelDownloadConditions
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
@@ -19,7 +18,6 @@ class DogDetector(private val context: Context) {
 
     companion object {
         private const val IMG_SIZE = 224
-        private const val ASSET = "asset"
         private const val MODEL_NAME = "dog-breed-detector"
         private const val MEAN = 128
         private const val STD = 128.0f
@@ -68,10 +66,6 @@ class DogDetector(private val context: Context) {
 
     private fun initializeInterpreter() {
         try {
-            val localSource = FirebaseLocalModelSource.Builder(ASSET)
-                .setAssetFilePath("$MODEL_NAME.tflite")
-                .build()
-
             val conditions = FirebaseModelDownloadConditions.Builder().requireWifi().build()
             val cloudSource = FirebaseCloudModelSource.Builder(MODEL_NAME)
                 .enableModelUpdates(true)
@@ -80,14 +74,12 @@ class DogDetector(private val context: Context) {
                 .build()
 
             FirebaseModelManager.getInstance().apply {
-                registerLocalModelSource(localSource)
                 registerCloudModelSource(cloudSource)
             }
 
             interpreter = FirebaseModelInterpreter.getInstance(
                 FirebaseModelOptions.Builder()
                     .setCloudModelName(MODEL_NAME)
-                    .setLocalModelName(ASSET)
                     .build()
             )
         } catch (e: FirebaseMLException) {
